@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent),ui(new Ui::MainWindo
         serial->write("/1ZR\r");
     }else{
         qDebug()<<serial->errorString();
-        serial->error()
+        //serial->error();
     }
     connect(serial,SIGNAL(readyRead()),this,SLOT(serialReceived()));
 }

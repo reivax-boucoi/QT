@@ -4,10 +4,11 @@ Pump::Pump(){
     comminit();
 }
 
-Pump::Pump(char a, QString p, QSerialPort::BaudRate bd){
+Pump::Pump(int a, QString p, uint bd){
     address=a;
     port=p;
-    baud=bd;
+    if(bd==38400)baud=QSerialPort::Baud38400;
+    if(bd==9600)baud=QSerialPort::Baud9600;
     comminit();
 }
 
@@ -15,16 +16,15 @@ Pump::~Pump(){
     serial->close();
 }
 void Pump::initialize(){
-    //serial->write('/'+address+"ZR\r");
-    serial->write("/1ZR");
-    qDebug()<<"Connected to "+serial->portName()+" @ "+QString::number(serial->baudRate())+" baud";
+    serial->write("/1ZR\r");
+    //serial->write("/1ZR\r");
+    pos=0;
 }
 
 void Pump::setPosition(uint p, char mode){
-
+    qDebug()<<p;
     switch(mode){
      case 'A': // Absolute mode
-        if(p<0)p=0;
         if(p>pmax)p=pmax;
         serial->write('/'+address+'A'+p+"\r");
         pos=p;
@@ -41,6 +41,32 @@ void Pump::setPosition(uint p, char mode){
     }
 }
 
+uint Pump::getPosition(){
+    return pos;
+}
+
+uint Pump::getPmax(){
+    return pmax;
+}
+
+uint Pump::getAddress(){
+    return address;
+}
+
+uint Pump::getBaudRate(){
+    if(baud==QSerialPort::Baud9600)return 9600;
+    if(baud==QSerialPort::Baud38400)return 38400;
+    return -1; // Julien ?
+}
+
+QString Pump::getPort(){
+    return port;
+}
+
+bool Pump::isConnected(){
+    return serial->isOpen();
+}
+
 bool Pump::comminit(){
     serial = new QSerialPort();
     serial->setPortName(port);
@@ -52,7 +78,6 @@ bool Pump::comminit(){
     if(! serial->open(QIODevice::ReadWrite)){
         QString er = serial->errorString();
         qDebug()<<er;
-        //ui->status_label->setText("Failed for "+serial->portName()+" : "+er);
         return false;
     }
     return true;

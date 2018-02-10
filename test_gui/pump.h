@@ -2,22 +2,26 @@
 #define PUMP_H
 
 #include <QDebug>
-
 #include <QSerialPort>
-//#include <QMainWindow>
 
 class Pump{
 public:
     Pump();
-    Pump(char a,QString p, QSerialPort::BaudRate bd);
+    Pump(int a,QString p, uint bd);
     ~Pump();
     void initialize();
     void setPosition(uint p,char mode);
+    uint getPosition();
+    uint getPmax();
+    uint getAddress();
+    uint getBaudRate();
+    QString getPort();
+    bool isConnected();
 protected :
 
 private :
     QSerialPort *serial;
-    char address =1;
+    uint address = 1;
     QString port="/dev/ttyUSB0";
     QSerialPort::BaudRate baud=QSerialPort::Baud38400;
     uint pos = 0; // 0 : origin (empty), 3000 : EOT (full)

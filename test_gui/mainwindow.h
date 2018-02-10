@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#define PREFIX "/1"
+#define PORT "/dev/ttyUSB0"
+#define BAUD 38400
 namespace Ui {
 class MainWindow;
 }

@@ -14,30 +14,23 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QLabel" name="status_label">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>100</y>
-      <width>80</width>
-      <height>26</height>
+      <x>-2</x>
+      <y>0</y>
+      <width>401</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Press Me !</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>60</y>
-      <width>59</width>
-      <height>18</height>
-     </rect>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
     </property>
     <property name="text">
      <string>MyLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

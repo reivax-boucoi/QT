@@ -118,7 +118,7 @@ void MainWindow::on_pushButton_connect_clicked(){
             for(int i=0;i<nbPumps;i++){
                 myPumps[i] = new Pump(i+1,serial);
             }
-            ui->statusBar->showMessage("Pump n°"+QString::number(myPumps[ui->spinBox_address->value()]->getAddress())+" connected on "+serial->portName()+" @ "+QString::number(serial->baudRate())+" baud");
+            ui->statusBar->showMessage("Connected on "+serial->portName()+" @ "+QString::number(serial->baudRate())+" baud");
             ui->pushButton_connect->setText("Disconnect");
         }else{
             ui->statusBar->showMessage("Failed to connect on "+serial->portName()+" @ "+QString::number(serial->baudRate())+" baud : "+serial->errorString());

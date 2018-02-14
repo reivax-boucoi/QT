@@ -13,9 +13,16 @@ class MainWindow : public QMainWindow{
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-private slots:
-    void on_initbutton_clicked();
 
+    bool comminit();
+
+    void pumpControls(bool on);
+
+private slots:
+
+    void serialReceived();
+
+    void on_initbutton_clicked();
 
     void on_plungermovebutton_clicked();
 
@@ -25,8 +32,13 @@ private slots:
 
     void on_radioButton_dispense_clicked();
 
-
     void on_pushButton_connect_clicked();
+
+    void on_comboBox_valve_activated(const QString &arg1);
+
+    void on_pushButton_cycle_clicked();
+
+    void on_pushButton_zeroall_clicked();
 
 private:
     Ui::MainWindow *ui;

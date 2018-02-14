@@ -30,6 +30,9 @@
     </item>
     <item row="0" column="3">
      <widget class="QPushButton" name="initbutton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -46,6 +49,9 @@
     </item>
     <item row="3" column="3">
      <widget class="QRadioButton" name="radioButton_pickup">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Pickup</string>
       </property>
@@ -53,6 +59,9 @@
     </item>
     <item row="2" column="4" rowspan="3">
      <widget class="QSlider" name="poslider">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -100,6 +109,9 @@
     </item>
     <item row="0" column="4">
      <widget class="QPushButton" name="plungermovebutton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -113,6 +125,9 @@
     </item>
     <item row="5" column="4">
      <widget class="QLCDNumber" name="lcdNumber">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
@@ -135,6 +150,9 @@
     </item>
     <item row="2" column="3">
      <widget class="QRadioButton" name="radioButton_absolute">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Absolute</string>
       </property>
@@ -145,6 +163,9 @@
     </item>
     <item row="4" column="3">
      <widget class="QRadioButton" name="radioButton_dispense">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Dispense</string>
       </property>
@@ -163,14 +184,60 @@
       </property>
      </spacer>
     </item>
+    <item row="5" column="3">
+     <widget class="QComboBox" name="comboBox_valve">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>Input</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Output</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Bypass</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Extra</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QPushButton" name="pushButton_cycle">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Cycle</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLabel" name="label_status">
+      <property name="text">
+       <string>label_status</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="pushButton_zeroall">
+      <property name="text">
+       <string>Zero All</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionDisconnect">
-   <property name="text">
-    <string>Disconnect</string>
-   </property>
-  </action>
   <action name="actionConnect">
    <property name="text">
     <string>Connect</string>

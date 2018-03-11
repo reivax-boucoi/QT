@@ -17,8 +17,7 @@ const int nbPumps =8;
 Pump *myPumps[nbPumps];
 
 MainWindow::MainWindow(QWidget *parent):QMainWindow(parent),ui(new Ui::MainWindow){
-    ui->setupUi(this);
-    serial = new QSerialPort();
+    ui->setupUi(this);    serial = new QSerialPort();
     // ui->status_label->setText("Connected to "+serial->portName()+" @ "+QString::number(serial->baudRate())+" baud");
     // QString er = serial->errorString();
     // qDebug()<<er;
@@ -158,6 +157,6 @@ void MainWindow::on_pushButton_cycle_clicked(){
 void MainWindow::on_pushButton_zeroall_clicked(){
     for(int i=0;i<nbPumps;i++){
         myPumps[i]->initialize();
-        delay(150);
+        delay(50);
     }
 }

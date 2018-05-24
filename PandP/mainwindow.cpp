@@ -28,9 +28,9 @@ void MainWindow::on_pushButtonCam_clicked(){
         cv::cvtColor(frame,frame,CV_BGR2RGB);
        // cv::imshow("WC",frame);
         QImage imgIn= QImage((uchar*) frame.data, frame.cols, frame.rows, frame.step, QImage::Format_RGB888);
-        QGraphicsPixmapItem item( QPixmap::fromImage(imgIn));
         QGraphicsScene *scene = new QGraphicsScene;
-        scene->addItem(&item);
+        scene->addPixmap(QPixmap::fromImage(imgIn));
+       // scene->setSceneRect(imgIn.rect());
         ui->graphicsViewCam->setScene(scene);
         ui->graphicsViewCam->show();
         qDebug()<<"Displayed";

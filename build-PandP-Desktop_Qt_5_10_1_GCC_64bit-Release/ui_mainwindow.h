@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
@@ -45,6 +46,7 @@ public:
     QLCDNumber *lcdNumberX;
     QLabel *labelX;
     QLineEdit *lineEditY;
+    QGraphicsView *graphicsViewCam;
     QPushButton *pushButtonCam;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -56,12 +58,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(650, 353);
+        MainWindow->resize(800, 720);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(70, 30, 381, 251));
+        gridLayoutWidget->setGeometry(QRect(10, 10, 381, 251));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
@@ -128,15 +130,16 @@ public:
 
         gridLayout->addWidget(lineEditY, 1, 3, 1, 1);
 
-        pushButtonCam = new QPushButton(gridLayoutWidget);
+        graphicsViewCam = new QGraphicsView(centralWidget);
+        graphicsViewCam->setObjectName(QStringLiteral("graphicsViewCam"));
+        graphicsViewCam->setGeometry(QRect(400, 50, 640, 480));
+        pushButtonCam = new QPushButton(centralWidget);
         pushButtonCam->setObjectName(QStringLiteral("pushButtonCam"));
-
-        gridLayout->addWidget(pushButtonCam, 0, 4, 1, 1);
-
+        pushButtonCam->setGeometry(QRect(440, 10, 80, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 650, 20));
+        menuBar->setGeometry(QRect(0, 0, 800, 20));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));

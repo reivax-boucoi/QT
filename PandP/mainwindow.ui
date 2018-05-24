@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
-    <height>353</height>
+    <width>800</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>30</y>
+      <x>10</x>
+      <y>10</y>
       <width>381</width>
       <height>251</height>
      </rect>
@@ -88,14 +88,30 @@
      <item row="1" column="3">
       <widget class="QLineEdit" name="lineEditY"/>
      </item>
-     <item row="0" column="4">
-      <widget class="QPushButton" name="pushButtonCam">
-       <property name="text">
-        <string>Webcam</string>
-       </property>
-      </widget>
-     </item>
     </layout>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsViewCam">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>50</y>
+      <width>640</width>
+      <height>480</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonCam">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>10</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Webcam</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -103,7 +119,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>650</width>
+     <width>800</width>
      <height>20</height>
     </rect>
    </property>

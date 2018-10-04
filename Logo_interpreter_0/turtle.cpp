@@ -7,11 +7,11 @@ Turtle::Turtle(QGraphicsScene *scene, float x, float y, float angle){
     this->angle=angle;
     pen=new QPen(Qt::black,3,Qt::SolidLine,Qt::RoundCap);
 
-    cmdLookUp["fw"]=(fw,1);
-    cmdLookUp["pu"]=(pu,0);
-    cmdLookUp["pd"]=(pd,0);/*
-    cmdLookUp["lt"]=lt;
-    cmdLookUp["rt"]=rt;*/
+    cmdLookUp["fw"]={&Turtle::cmd_fw,1};
+    cmdLookUp["pu"]={&Turtle::cmd_pu,0};
+    cmdLookUp["pd"]={&Turtle::cmd_pd,0};/*
+    cmdLookUp["lt"]=cmd_lt;
+    cmdLookUp["rt"]=cmd_rt;*/
 }
 
 void Turtle::clear(){
@@ -62,7 +62,7 @@ void Turtle::execute(QString str){
     }
     QStringList cm = str.split(" ");
     for(int i=0;i<cm.size()-1;i++){
-        if(cmdLookUp.find(cm[i]!=cmdLookUp.end())){//if is a command
+        if(cmdLookUp.find(cm[i])!=cmdLookUp.end()){//if is a command
             cmd_t cmd = cmdLookUp[cm[i]];
             if(cmd.nb_args){//if requires arguments
                 int arg=cm[i+1].toInt();
@@ -70,7 +70,11 @@ void Turtle::execute(QString str){
                     qDebug()<<"Missing argument for command\""<<cm[i]<<"\"!"<<endl;
                 }else{
                     i++;
+                     (*(cmd.fn_ptr))(arg);
+                    qDebug()<<"Run "<<cm[i-1]<<" with arg "<<arg<<endl;
                 }
+            }else{
+                (*(cmd.fn_ptr))(0);
             }
         }else{
             qDebug()<<"unknown command \""<<cm[i]<<"\"!"<<endl;

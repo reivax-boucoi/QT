@@ -28,11 +28,12 @@ private:
     float y=0;
     float angle;
     bool penUp=false;
-    typedef struct{
-        void (*fn_ptr)(float);
+    struct cmd_t{
+        void (Turtle::*fn_ptr)(float);
         int nb_args;
-    }cmd_t;
-    std::map<QString , cmd_t> cmdLookUp;
+    };
+    typedef struct cmd_t cmd_t;
+    static std::map<QString , cmd_t> cmdLookUp;
 
 };
 

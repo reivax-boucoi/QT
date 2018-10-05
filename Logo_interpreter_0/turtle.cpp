@@ -62,6 +62,15 @@ void Turtle::execute(QString str){
     }
     QStringList cm = str.split(" ");
     for(int i=0;i<cm.size()-1;i++){
+        if(cm[i]=="repeat"){
+            int arg=cm[i+1].toInt();
+            if(arg){
+
+            }else{
+                qDebug()<<"Missing argument for command repeat"<<endl;
+            }
+
+        }
         if(cmdLookUp.find(cm[i])!=cmdLookUp.end()){//if is a command
             cmd_t cmd = cmdLookUp[cm[i]];
             if(cmd.nb_args){//if requires arguments

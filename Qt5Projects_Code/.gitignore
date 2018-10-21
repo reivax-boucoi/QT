@@ -1,0 +1,4 @@
+*.user
+part1-whats_in_my_fridge/gui/android/gradle.properties
+part1-whats_in_my_fridge/gui/android/local.properties
+*.qmlc

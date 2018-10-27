@@ -9,8 +9,6 @@
 
 class Turtle{
 public:
-
-    Turtle(QGraphicsScene* scene);
     Turtle(QGraphicsScene* scene,float x,float y,float angle);
     void clear(void);
     void home(void);
@@ -30,8 +28,11 @@ private:
     float y=0;
     float angle;
     bool penUp=false;
-    typedef void (*fn_ptr)(float);
-    std::map<QString , fn_ptr> cmdLookUp;
+    typedef struct{
+        void (*fn_ptr)(float);
+        int nb_args;
+    }cmd_t;
+    std::map<QString , cmd_t> cmdLookUp;
 
 };
 

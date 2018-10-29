@@ -25,7 +25,7 @@ void Turtle::home(){
     angle=0;
 }
 
-void Turtle::cmd_penOnOff(bool onoff){
+void Turtle::penOnOff(bool onoff){
     penUp=!onoff;
 }
 
@@ -47,6 +47,13 @@ void Turtle::cmd_tr(float a){
 }
 void Turtle::cmd_tl(float a){
     cmd_tr(-a);
+}
+
+void Turtle::cmd_pu(float a){
+    penOnOff(0);
+}
+void Turtle::cmd_pd(float a){
+    penOnOff(1);
 }
 void Turtle::execute(QString str){
     if(str.length()<2){

@@ -14,10 +14,12 @@ public:
     Turtle(QGraphicsScene* scene,float x,float y,float angle);
     void clear(void);
     void home(void);
-    void cmd_penOnOff(bool onoff);
+    void penOnOff(bool onoff);
     void cmd_fw(float d);
     void cmd_tr(float a);
     void cmd_tl(float a);
+    void cmd_pu(float a);
+    void cmd_pd(float a);
     void execute(QString str);
 
 

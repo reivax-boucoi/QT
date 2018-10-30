@@ -14,10 +14,10 @@ public:
     Turtle(QGraphicsScene* scene,float x,float y,float angle);
     void clear(void);
     void home(void);
-    void penOnOff(bool onoff);
-    bool penOnOff(void);
-    void fw(float d);
-    void turn(float a);
+    void cmd_penOnOff(bool onoff);
+    void cmd_fw(float d);
+    void cmd_tr(float a);
+    void cmd_tl(float a);
     void execute(QString str);
 
 
@@ -28,6 +28,8 @@ private:
     float y=0;
     float angle;
     bool penUp=false;
+    typedef void (*fn_ptr)(float);
+    std::map<QString , fn_ptr> cmdLookUp;
 
 };
 

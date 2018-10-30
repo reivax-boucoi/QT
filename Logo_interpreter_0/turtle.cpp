@@ -25,11 +25,11 @@ void Turtle::home(){
     angle=0;
 }
 
-void Turtle::penOnOff(bool onoff){
+void Turtle::cmd_penOnOff(bool onoff){
     penUp=!onoff;
 }
 
-void Turtle::fw(float d){
+void Turtle::cmd_fw(float d){
     float x1=x+d*qCos(qDegreesToRadians(angle));
     float y1=y+d*qSin(qDegreesToRadians(angle));
     if(!penUp){
@@ -42,18 +42,12 @@ void Turtle::fw(float d){
 
 }
 
-void Turtle::turn(float a){
+void Turtle::cmd_tr(float a){
     angle+=a;
 }
-/*
-    {"pu",0},
-    {"pd",0},
-    {"lt",1},
-    {"rt",1},
-    {"fw",1},
-    {"repeat",2}
-*/
-
+void Turtle::cmd_tl(float a){
+    cmd_tr(-a);
+}
 void Turtle::execute(QString str){
     if(str.length()<2){
         qDebug()<<"Too short !"<<endl;

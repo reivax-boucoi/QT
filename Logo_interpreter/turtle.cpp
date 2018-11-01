@@ -53,6 +53,7 @@ void Turtle::turn(float a){
     {"fw",1},
     {"repeat",2}
 */
+/*
 void Turtle::execute(QString str){
     if(str.length()<2){
         qDebug()<<"Too short !"<<endl;
@@ -73,3 +74,4 @@ void Turtle::execute(QString str){
         }
     }
 }
+*/

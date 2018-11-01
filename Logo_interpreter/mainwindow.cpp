@@ -19,7 +19,7 @@ MainWindow::~MainWindow(){
 
 void MainWindow::on_runButton_clicked(){
     qDebug()<<"Run"<<endl;
-    t->execute(ui->textEdit->toPlainText());
+    //t->execute(ui->textEdit->toPlainText());
 }
 
 void MainWindow::on_clearAllButton_clicked(){

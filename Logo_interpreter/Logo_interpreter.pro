@@ -26,12 +26,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    logo.cpp \
     turtle.cpp
 
 HEADERS += \
         mainwindow.h \
-    logo.h \
     turtle.h
 
 FORMS += \

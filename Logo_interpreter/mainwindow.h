@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include "turtle.h"
-#include "logo.h"
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
@@ -31,7 +30,6 @@ private:
     Ui::MainWindow *ui;
     QGraphicsScene* scene;
     QGraphicsView* view;
-    Logo* logo;
     Turtle* t;
 };
 

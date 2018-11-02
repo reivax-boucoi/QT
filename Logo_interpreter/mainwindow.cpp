@@ -9,7 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
     view->setBackgroundBrush(Qt::white);
     view->show();
     t=new Turtle(scene,50.0,50.0,0.0);
-    logo=new Logo(t);
     t->penOnOff(1);
 }
 
@@ -20,7 +19,7 @@ MainWindow::~MainWindow(){
 
 void MainWindow::on_runButton_clicked(){
     qDebug()<<"Run"<<endl;
-    logo->execute(ui->textEdit->toPlainText());
+    t->execute(ui->textEdit->toPlainText());
 }
 
 void MainWindow::on_clearAllButton_clicked(){

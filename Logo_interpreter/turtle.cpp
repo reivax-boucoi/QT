@@ -45,3 +45,31 @@ void Turtle::fw(float d){
 void Turtle::turn(float a){
     angle+=a;
 }
+/*
+    {"pu",0},
+    {"pd",0},
+    {"lt",1},
+    {"rt",1},
+    {"fw",1},
+    {"repeat",2}
+*/
+void Turtle::execute(QString str){
+    if(str.length()<2){
+        qDebug()<<"Too short !"<<endl;
+        return;
+    }
+    QStringList cm = str.split(" ");
+    for(int i=0;i<cm.size()-1;i++){
+        if(cm[i]=="repeat"){
+
+        }else{
+            int arg=cm[i+1].toInt();
+            if(arg!=0){
+                //command(cm[i],arg);
+                i++;
+            }else{
+                qDebug()<<"No argument provided for cmd "<<cm[i]<<" !"<<endl;
+            }
+        }
+    }
+}

@@ -17,6 +17,8 @@ public:
     bool penOnOff(void);
     void fw(float d);
     void turn(float a);
+    void execute(QString str);
+
 
 private:
     QGraphicsScene* scene;

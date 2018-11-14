@@ -10,7 +10,7 @@
 */
 Logo::Logo(Turtle *t){
     this->t=t;
-    this->cmds=
+    cmdLookUp.insert("pu",t->fw);
 }
 
 void Logo::execute(QString str){

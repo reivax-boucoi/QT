@@ -2,7 +2,6 @@
 #define LOGO_H
 
 #include "turtle.h"
-#include "cmd.h"
 #include <QDebug>
 class Logo{
 public:
@@ -10,7 +9,8 @@ public:
     void execute(QString str);
 private:
     Turtle* t;
-    Cmd cmds[];
+    typedef void (*fn_ptr)(float);
+    std::map<QString , fn_ptr> cmdLookUp;
     void command(QString cmd, int arg);
 };
 #endif // LOGO_H

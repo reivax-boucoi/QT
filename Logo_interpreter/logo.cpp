@@ -1,15 +1,16 @@
 #include "logo.h"
 
-static const Turtle::cmd_t cmds[]={
+/*
     {"pu",0},
     {"pd",0},
     {"lt",1},
     {"rt",1},
     {"fw",1},
     {"repeat",2}
-};
+*/
 Logo::Logo(Turtle *t){
     this->t=t;
+    this->cmds=
 }
 
 void Logo::execute(QString str){

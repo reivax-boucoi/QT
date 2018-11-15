@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     logo.cpp \
-    turtle.cpp
+    turtle.cpp \
+    cmd.cpp
 
 HEADERS += \
         mainwindow.h \
     logo.h \
-    turtle.h
+    turtle.h \
+    cmd.h
 
 FORMS += \
         mainwindow.ui

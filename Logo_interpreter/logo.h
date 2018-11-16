@@ -4,10 +4,11 @@
 #include "turtle.h"
 #include <QDebug>
 class Logo{
-    typedef struct{
+    struct cmd_t{
         QString name;
         int nb_args;
-    }cmd_t;
+    };
+    typedef struct cmd_t cmd_t;
 public:
     Logo(Turtle* t);
     void execute(QString str);

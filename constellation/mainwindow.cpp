@@ -31,6 +31,9 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
         scatter->axisX()->setTitle("r");
         scatter->axisY()->setTitle("g");
         scatter->axisZ()->setTitle("b");
+        Q3DTheme* t=new Q3DTheme;
+        t->setBackgroundColor(Qt::black);
+        scatter->addTheme(t);
         ui->gridLayout->addWidget(ui->graphWidget, 5, 0, 1, 4);
     }
 }

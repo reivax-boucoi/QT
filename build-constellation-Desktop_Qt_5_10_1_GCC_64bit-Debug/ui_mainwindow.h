@@ -69,8 +69,8 @@ public:
 
         spinBox = new QSpinBox(centralWidget);
         spinBox->setObjectName(QStringLiteral("spinBox"));
-        spinBox->setMinimum(2);
-        spinBox->setMaximum(4);
+        spinBox->setMinimum(0);
+        spinBox->setMaximum(6);
 
         gridLayout->addWidget(spinBox, 0, 3, 1, 1);
 

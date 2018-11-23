@@ -4,6 +4,7 @@
 using namespace QtDataVisualization;
 QSerialPort serial;
 QScatter3DSeries *series;
+QScatter3DSeries *kseries;
 
 
 MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWindow){
@@ -23,22 +24,30 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
         qDebug()<<"Connected to"<<serial.portName()<<"at"<<serial.baudRate()<<"bauds"<<endl;
 
         connect(&serial, SIGNAL(readyRead()), this, SLOT(readData()));
-
-        Q3DScatter *scatter = new Q3DScatter();
-        ui->graphWidget=QWidget::createWindowContainer(scatter);
-        series = new QScatter3DSeries;
-        series->setItemSize(.1f);
-       // series->setBaseColor(Qt::white);
-        series->setColorStyle(Q3DTheme::ColorStyleObjectGradient);
-        scatter->addSeries(series);
-        scatter->axisX()->setTitle("r");
-        scatter->axisY()->setTitle("g");
-        scatter->axisZ()->setTitle("b");
-        Q3DTheme* t=new Q3DTheme(Q3DTheme::ThemeEbony);
-       // t->setBackgroundColor(Qt::black);
-        scatter->setActiveTheme(t);
-        ui->gridLayout->addWidget(ui->graphWidget, 4, 0, 1, 4);
     }
+    Q3DScatter *scatter = new Q3DScatter();
+    ui->graphWidget=QWidget::createWindowContainer(scatter);
+    Q3DTheme* t=new Q3DTheme(Q3DTheme::ThemeEbony);
+
+    scatter->setActiveTheme(t);
+    scatter->axisX()->setTitle("r");
+    scatter->axisY()->setTitle("g");
+    scatter->axisZ()->setTitle("b");
+
+    series = new QScatter3DSeries;
+    series->setItemSize(.1f);
+    series->setColorStyle(Q3DTheme::ColorStyleObjectGradient);
+    series->setBaseColor(Qt::white);
+    kseries = new QScatter3DSeries;
+    kseries->setItemSize(1);
+    kseries->setColorStyle(Q3DTheme::ColorStyleObjectGradient);
+    kseries->setBaseColor(Qt::red);
+
+    scatter->addSeries(series);
+    scatter->addSeries(kseries);
+    ui->gridLayout->addWidget(ui->graphWidget, 4, 0, 1, 3);
+
+
 }
 
 MainWindow::~MainWindow(){
@@ -69,10 +78,3 @@ void MainWindow::on_clearButton_clicked(){
     series->dataProxy()->resetArray(NULL);
 }
 
-void MainWindow::on_mode_clicked(){
-    QByteArray a="c";
-    a+=ui->spinBox->value()+48;
-    a+="\r\n";
-    qDebug()<<a;
-    serial.write(a);
-}

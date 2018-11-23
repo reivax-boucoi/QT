@@ -18,7 +18,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,51 +27,37 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QWidget *graphWidget;
     QPushButton *clearButton;
     QFrame *line;
-    QPushButton *mode;
-    QSpinBox *spinBox;
+    QWidget *graphWidget;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(672, 553);
+        MainWindow->resize(848, 615);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        graphWidget = new QWidget(centralWidget);
-        graphWidget->setObjectName(QStringLiteral("graphWidget"));
-
-        gridLayout->addWidget(graphWidget, 4, 0, 1, 4);
-
         clearButton = new QPushButton(centralWidget);
         clearButton->setObjectName(QStringLiteral("clearButton"));
 
-        gridLayout->addWidget(clearButton, 0, 1, 1, 1);
+        gridLayout->addWidget(clearButton, 0, 0, 1, 1);
 
         line = new QFrame(centralWidget);
         line->setObjectName(QStringLiteral("line"));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
 
-        gridLayout->addWidget(line, 3, 0, 1, 4);
+        gridLayout->addWidget(line, 3, 0, 1, 1);
 
-        mode = new QPushButton(centralWidget);
-        mode->setObjectName(QStringLiteral("mode"));
+        graphWidget = new QWidget(centralWidget);
+        graphWidget->setObjectName(QStringLiteral("graphWidget"));
 
-        gridLayout->addWidget(mode, 0, 2, 1, 1);
-
-        spinBox = new QSpinBox(centralWidget);
-        spinBox->setObjectName(QStringLiteral("spinBox"));
-        spinBox->setMinimum(0);
-        spinBox->setMaximum(6);
-
-        gridLayout->addWidget(spinBox, 0, 3, 1, 1);
+        gridLayout->addWidget(graphWidget, 4, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
 
@@ -85,7 +70,6 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         clearButton->setText(QApplication::translate("MainWindow", "Clear", nullptr));
-        mode->setText(QApplication::translate("MainWindow", "Send Mode", nullptr));
     } // retranslateUi
 
 };

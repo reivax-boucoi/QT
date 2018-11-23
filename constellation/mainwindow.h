@@ -25,8 +25,6 @@ private slots:
 
     void on_clearButton_clicked();
 
-    void on_mode_clicked();
-
 private:
     Ui::MainWindow *ui;
 };

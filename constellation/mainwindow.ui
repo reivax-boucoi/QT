@@ -15,82 +15,37 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="4" column="0" colspan="4">
+     <widget class="QWidget" name="graphWidget" native="true"/>
+    </item>
     <item row="0" column="1">
-     <widget class="QSlider" name="redSlider">
-      <property name="maximum">
-       <number>255</number>
+     <widget class="QPushButton" name="clearButton">
+      <property name="text">
+       <string>Clear</string>
       </property>
-      <property name="singleStep">
-       <number>128</number>
-      </property>
-      <property name="pageStep">
-       <number>128</number>
-      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="4">
+     <widget class="Line" name="line">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="redButtoon">
-      <property name="text">
-       <string>Red</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="greenButtoon">
-      <property name="text">
-       <string>Green</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QPushButton" name="blueButtoon">
-      <property name="text">
-       <string>Blue</string>
       </property>
      </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QSlider" name="greenSlider">
-      <property name="maximum">
-       <number>255</number>
-      </property>
-      <property name="singleStep">
-       <number>128</number>
-      </property>
-      <property name="pageStep">
-       <number>128</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+     <widget class="QPushButton" name="mode">
+      <property name="text">
+       <string>Send Mode</string>
       </property>
      </widget>
     </item>
     <item row="0" column="3">
-     <widget class="QSlider" name="blueSlider">
+     <widget class="QSpinBox" name="spinBox">
+      <property name="minimum">
+       <number>2</number>
+      </property>
       <property name="maximum">
-       <number>255</number>
-      </property>
-      <property name="singleStep">
-       <number>128</number>
-      </property>
-      <property name="pageStep">
-       <number>128</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0" colspan="4">
-     <widget class="QWidget" name="graphWidget" native="true"/>
-    </item>
-    <item row="4" column="0" colspan="4">
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <number>4</number>
       </property>
      </widget>
     </item>

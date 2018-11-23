@@ -27,14 +27,17 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent),ui(new Ui::MainWind
         Q3DScatter *scatter = new Q3DScatter();
         ui->graphWidget=QWidget::createWindowContainer(scatter);
         series = new QScatter3DSeries;
+        series->setItemSize(.1f);
+       // series->setBaseColor(Qt::white);
+        series->setColorStyle(Q3DTheme::ColorStyleObjectGradient);
         scatter->addSeries(series);
         scatter->axisX()->setTitle("r");
         scatter->axisY()->setTitle("g");
         scatter->axisZ()->setTitle("b");
-        Q3DTheme* t=new Q3DTheme;
-        t->setBackgroundColor(Qt::black);
-        scatter->addTheme(t);
-        ui->gridLayout->addWidget(ui->graphWidget, 5, 0, 1, 4);
+        Q3DTheme* t=new Q3DTheme(Q3DTheme::ThemeEbony);
+       // t->setBackgroundColor(Qt::black);
+        scatter->setActiveTheme(t);
+        ui->gridLayout->addWidget(ui->graphWidget, 4, 0, 1, 4);
     }
 }
 
@@ -57,18 +60,19 @@ void MainWindow::readData(){
             }
             series->dataProxy()->addItem(QVector3D(rgb[0],rgb[1],rgb[2]));
         }
+        //qDebug()<<data;
     }
 }
 
-void MainWindow::on_blueButtoon_clicked(){
-    series->dataProxy()->addItem(QVector3D(ui->blueSlider->value(),128,128));
+
+void MainWindow::on_clearButton_clicked(){
+    series->dataProxy()->resetArray(NULL);
 }
 
-void MainWindow::on_greenButtoon_clicked(){
-    //  serial.write("b255\r\n");
-}
-
-void MainWindow::on_redButtoon_clicked(){
-    // serial.write("b0\r\n");
-
+void MainWindow::on_mode_clicked(){
+    QByteArray a="c";
+    a+=ui->spinBox->value()+48;
+    a+="\r\n";
+    qDebug()<<a;
+    serial.write(a);
 }

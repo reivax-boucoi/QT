@@ -22,9 +22,10 @@ public slots:
     void readData();
 
 private slots:
-    void on_blueButtoon_clicked();
-    void on_greenButtoon_clicked();
-    void on_redButtoon_clicked();
+
+    void on_clearButton_clicked();
+
+    void on_mode_clicked();
 
 private:
     Ui::MainWindow *ui;

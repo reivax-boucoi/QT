@@ -18,7 +18,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSlider>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,14 +28,11 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QSlider *redSlider;
-    QPushButton *redButtoon;
-    QPushButton *greenButtoon;
-    QPushButton *blueButtoon;
-    QSlider *greenSlider;
-    QSlider *blueSlider;
     QWidget *graphWidget;
+    QPushButton *clearButton;
     QFrame *line;
+    QPushButton *mode;
+    QSpinBox *spinBox;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -48,59 +45,34 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        redSlider = new QSlider(centralWidget);
-        redSlider->setObjectName(QStringLiteral("redSlider"));
-        redSlider->setMaximum(255);
-        redSlider->setSingleStep(128);
-        redSlider->setPageStep(128);
-        redSlider->setOrientation(Qt::Horizontal);
-
-        gridLayout->addWidget(redSlider, 0, 1, 1, 1);
-
-        redButtoon = new QPushButton(centralWidget);
-        redButtoon->setObjectName(QStringLiteral("redButtoon"));
-
-        gridLayout->addWidget(redButtoon, 1, 1, 1, 1);
-
-        greenButtoon = new QPushButton(centralWidget);
-        greenButtoon->setObjectName(QStringLiteral("greenButtoon"));
-
-        gridLayout->addWidget(greenButtoon, 1, 2, 1, 1);
-
-        blueButtoon = new QPushButton(centralWidget);
-        blueButtoon->setObjectName(QStringLiteral("blueButtoon"));
-
-        gridLayout->addWidget(blueButtoon, 1, 3, 1, 1);
-
-        greenSlider = new QSlider(centralWidget);
-        greenSlider->setObjectName(QStringLiteral("greenSlider"));
-        greenSlider->setMaximum(255);
-        greenSlider->setSingleStep(128);
-        greenSlider->setPageStep(128);
-        greenSlider->setOrientation(Qt::Horizontal);
-
-        gridLayout->addWidget(greenSlider, 0, 2, 1, 1);
-
-        blueSlider = new QSlider(centralWidget);
-        blueSlider->setObjectName(QStringLiteral("blueSlider"));
-        blueSlider->setMaximum(255);
-        blueSlider->setSingleStep(128);
-        blueSlider->setPageStep(128);
-        blueSlider->setOrientation(Qt::Horizontal);
-
-        gridLayout->addWidget(blueSlider, 0, 3, 1, 1);
-
         graphWidget = new QWidget(centralWidget);
         graphWidget->setObjectName(QStringLiteral("graphWidget"));
 
-        gridLayout->addWidget(graphWidget, 5, 0, 1, 4);
+        gridLayout->addWidget(graphWidget, 4, 0, 1, 4);
+
+        clearButton = new QPushButton(centralWidget);
+        clearButton->setObjectName(QStringLiteral("clearButton"));
+
+        gridLayout->addWidget(clearButton, 0, 1, 1, 1);
 
         line = new QFrame(centralWidget);
         line->setObjectName(QStringLiteral("line"));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
 
-        gridLayout->addWidget(line, 4, 0, 1, 4);
+        gridLayout->addWidget(line, 3, 0, 1, 4);
+
+        mode = new QPushButton(centralWidget);
+        mode->setObjectName(QStringLiteral("mode"));
+
+        gridLayout->addWidget(mode, 0, 2, 1, 1);
+
+        spinBox = new QSpinBox(centralWidget);
+        spinBox->setObjectName(QStringLiteral("spinBox"));
+        spinBox->setMinimum(2);
+        spinBox->setMaximum(4);
+
+        gridLayout->addWidget(spinBox, 0, 3, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
 
@@ -112,9 +84,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        redButtoon->setText(QApplication::translate("MainWindow", "Red", nullptr));
-        greenButtoon->setText(QApplication::translate("MainWindow", "Green", nullptr));
-        blueButtoon->setText(QApplication::translate("MainWindow", "Blue", nullptr));
+        clearButton->setText(QApplication::translate("MainWindow", "Clear", nullptr));
+        mode->setText(QApplication::translate("MainWindow", "Send Mode", nullptr));
     } // retranslateUi
 
 };
